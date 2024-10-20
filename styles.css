@@ -13,7 +13,8 @@ body {
                         "heading heading"
                         "main-view asidebar";
   
-   
+
+
   }
   
   #navbar{
@@ -76,6 +77,9 @@ body {
   
   
   @media (max-width: 768px) {
+    main{
+      margin: 0px 0px;
+    }
     #asidebar {
         width: 100%;
         max-width: none; 
