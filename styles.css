@@ -84,6 +84,9 @@ body {
         width: 100%;
         max-width: none; 
     }
+    #container{
+      overflow-x: auto;
+    }
     
   
   }
