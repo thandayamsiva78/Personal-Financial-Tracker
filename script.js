@@ -13,12 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
         budgetDark.style.color = "black";
         const inputs = document.querySelectorAll('input');
         inputs.forEach(input => {
-            input.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+            input.style.backgroundColor = "rgba(0, 0, 0, 0.10)";
             input.style.border = "1px solid gray";
         });
         const selects = document.querySelectorAll("select");
         selects.forEach(select =>{
-            select.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+            select.style.backgroundColor = "rgba(0, 0, 0, 0.10)";
             select.style.border = "1px solid gray";
         })
   
