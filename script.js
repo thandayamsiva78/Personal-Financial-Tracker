@@ -1,7 +1,5 @@
 import { myPieChart, updatePieChart } from "./chart.js";
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const toggleTheme = document.getElementById("toggleTheme");
