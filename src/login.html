@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            border-radius: 12px;
+            border: 2px solid rgb(16, 146, 16);
+            padding: 16px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        button {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid gray;
+        }
+
+        button {
+            font-weight: bold;
+            background-color: rgb(25, 204, 25);
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(25, 143, 25);
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+
+        }
+        #closeBtn{
+            position: absolute;
+            height: 30px;
+            right: 16px;
+            cursor: pointer;
+        }
+        #closeBtn:hover{
+            background-color: rgb(157, 247, 157);
+            border-radius: 100%;
+        }
+        .links{
+            display: flex;
+            justify-content: space-between;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form action="" id="login-form">
+        <h1>Login </h1>
+        <label for="name">Name</label>
+        <input type="text" name="name" id="name">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <button type="submit">LOGIN</button>
+        <div class="links">
+            <a href="/index.html">Already Logged?</a>
+            <a href="#">Forgot Password?</a>
+        </div>
+        <svg id="closeBtn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+          
+    </form>
+
+    <script>
+        const loginForm = document.getElementById("login-form");
+        loginForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            let emailPattern = /@/;
+            if (emailPattern.test(email)) {
+                localStorage.setItem("User Name", name);
+                localStorage.setItem("User Email", email);
+
+                location.href = "/index.html";
+            }else{
+                alert("Please fill the Form")
+            }
+        })
+
+        const closeBtn = document.getElementById("closeBtn");
+        closeBtn.addEventListener("click", function(){
+            location.href = "/index.html";
+        })
+
+    </script>
+</body>
+
+</html>
