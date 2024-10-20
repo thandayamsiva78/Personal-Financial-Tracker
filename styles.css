@@ -52,7 +52,6 @@ body {
                             "main-view"
                             "asidebar";
   
-    
     }
     #asidebar{
         width: 100%;
@@ -82,9 +81,16 @@ body {
     }
     #asidebar {
         width: 100%;
-        max-width: none; 
+        max-width: none;
     }
+    main{
+      margin: 0px 0px;
+    }
+<<<<<<< HEAD
     
+=======
+  
+>>>>>>> ddc0a5d (responsive)
   }
   
   
@@ -128,6 +134,9 @@ body {
     padding: 8px;
     text-align: left;
     
+  }
+  tr{
+    font-weight: 300;
   }
   
   
