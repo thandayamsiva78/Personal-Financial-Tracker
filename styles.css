@@ -86,13 +86,10 @@ body {
     main{
       margin: 0px 0px;
     }
-<<<<<<< HEAD
-    
-=======
-  
->>>>>>> ddc0a5d (responsive)
+    #greeting , #userName2{
+      font-size: 25px;
+    }
   }
-  
   
   
   

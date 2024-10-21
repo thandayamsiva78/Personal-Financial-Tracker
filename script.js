@@ -71,13 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem("monthlyBudget", monthlyBudget); 
             monthlyBudgetDisplay.innerText = `₹${monthlyBudget.toFixed(2)}`;
             updateBalanceDisplay()
+            indicatorUpdate(expensesCount , monthlyBudget)
         } else {
             alert("Please enter a valid positive number for the budget.");
         }
   
-        
     });
-  
+    
   
   
     function updateBalanceDisplay() {
@@ -86,7 +86,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const CurrentBalence = ( monthlyBudget + incomeCount) - expensesCount;
         balanceDisplay.innerText = `₹${CurrentBalence.toFixed(2)}`;
         savingsDisplay.innerText = `₹${CurrentBalence.toFixed(2)}`;
-        
+        const expensesDisplay = parseFloat(document.getElementById("expensesDisplay").innerText.replace("₹" , ''));
+        const monthlyBudgetDisplay = parseFloat(document.getElementById("monthlyBudgetDisplay").innerText.replace("₹", ''));
+        // console.log(monthlyBudgetDisplay);
+        // console.log(expensesDisplay);
+        const indicator = document.getElementById("indicator");
+        if (expensesDisplay > monthlyBudgetDisplay){
+            indicator.innerText = "Over Budget";
+            indicator.style.color = "red";
+            indicator.style.fontWeight = "bold";
+        }else{
+            indicator.innerText = "On Budget";
+            indicator.style.color = "green";
+            indicator.style.fontWeight = "bold";
+        }
     }
   
   
