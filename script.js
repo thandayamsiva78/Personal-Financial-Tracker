@@ -2,6 +2,35 @@ import { myPieChart, updatePieChart } from "./chart.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 
+    const reset = document.getElementById("reset");
+    reset.addEventListener("click" , function(){
+        localStorage.clear("transactions");
+
+        incomeCount = 0
+        expensesCount = 0
+        monthlyBudget = 0
+
+        document.getElementById("incomeDisplay").innerText = `₹0.00`;
+        document.getElementById("expensesDisplay").innerText = `₹0.00`;
+        document.getElementById("monthlyBudgetDisplay").innerText = `₹0.00`;
+        document.getElementById("balanceDisplay").innerText = `₹0.00`;
+        document.getElementById("savingsDisplay").innerText = `₹0.00`;
+
+        document.getElementById("entertainmentInPercentage").innerText = '0%';
+        document.getElementById("rentInPercentage").innerText = '0%';
+        document.getElementById("shoppingInPercentage").innerText = '0%';
+        document.getElementById("foodAndHealthInPercentage").innerText = '0%';
+        document.getElementById("othersinPercentage").innerText = '0%';
+
+        updatePieChart([0, 0, 0, 0, 0]);
+        document.getElementById("container").innerHTML = "";
+        reset.style.display = "none";
+        const indicator = document.getElementById("indicator");
+        indicator.style.display = "none";
+        
+
+    });
+
     const toggleTheme = document.getElementById("toggleTheme");
     toggleTheme.addEventListener("click" , function(){
         document.body.classList.toggle("darkTheme");
@@ -66,6 +95,8 @@ document.addEventListener("DOMContentLoaded", () => {
     
     setMonthlyBudget.addEventListener("click", function() {
         const monthlyBudgetValue = parseFloat(document.getElementById("monthly-budget-input").value);
+        const indicator = document.getElementById("indicator");
+        indicator.style.display = "block";
         if (!isNaN(monthlyBudgetValue) && monthlyBudgetValue > 0) {
             monthlyBudget = monthlyBudgetValue;
             localStorage.setItem("monthlyBudget", monthlyBudget); 
@@ -75,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             alert("Please enter a valid positive number for the budget.");
         }
-  
     });
     
   
@@ -91,11 +121,15 @@ document.addEventListener("DOMContentLoaded", () => {
         // console.log(monthlyBudgetDisplay);
         // console.log(expensesDisplay);
         const indicator = document.getElementById("indicator");
+        const reset = document.getElementById("reset");
         if (expensesDisplay > monthlyBudgetDisplay){
+            reset.style.display = "block"
+            indicator.style.display = "block";
             indicator.innerText = "Over Budget";
             indicator.style.color = "red";
             indicator.style.fontWeight = "bold";
         }else{
+            reset.style.display = "none"
             indicator.innerText = "On Budget";
             indicator.style.color = "green";
             indicator.style.fontWeight = "bold";
@@ -135,14 +169,13 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
   
-  
         const TRANSACTION = {
             description: description,
             amount: amount,
             date: date,
             category: category
         };
-  
+        
         saveToLocalStorage(TRANSACTION);
         handleTransaction(TRANSACTION);
         updateBalanceDisplay();
@@ -317,9 +350,6 @@ document.addEventListener("DOMContentLoaded", () => {
         table.appendChild(tbody);
         container.appendChild(table);
     }
-  
     loadTransactions();
-   
-  
   });
   
