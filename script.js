@@ -100,7 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isNaN(monthlyBudgetValue) && monthlyBudgetValue > 0) {
             monthlyBudget = monthlyBudgetValue;
             localStorage.setItem("monthlyBudget", monthlyBudget); 
-            alert(monthlyBudgetDisplay.innerText = `₹${monthlyBudget.toFixed(2)}`);
+            let Mdisplay = monthlyBudgetDisplay.innerText = `₹${monthlyBudget.toFixed(2)}`;
+            alert(`Your Budget ${Mdisplay} Added Successfully!`)
             indicator.style.display = "block";
             updateBalanceDisplay()
             indicatorUpdate(expensesCount , monthlyBudget)
