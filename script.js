@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const reset = document.getElementById("reset");
     reset.addEventListener("click" , function(){
-        localStorage.clear("transactions");
+        localStorage.removeItem("transactions");
+        localStorage.removeItem("monthlyBudget");
 
         incomeCount = 0
         expensesCount = 0
@@ -96,11 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
     setMonthlyBudget.addEventListener("click", function() {
         const monthlyBudgetValue = parseFloat(document.getElementById("monthly-budget-input").value);
         const indicator = document.getElementById("indicator");
-        indicator.style.display = "block";
         if (!isNaN(monthlyBudgetValue) && monthlyBudgetValue > 0) {
             monthlyBudget = monthlyBudgetValue;
             localStorage.setItem("monthlyBudget", monthlyBudget); 
-            monthlyBudgetDisplay.innerText = `₹${monthlyBudget.toFixed(2)}`;
+            alert(monthlyBudgetDisplay.innerText = `₹${monthlyBudget.toFixed(2)}`);
+            indicator.style.display = "block";
             updateBalanceDisplay()
             indicatorUpdate(expensesCount , monthlyBudget)
         } else {

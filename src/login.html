@@ -27,6 +27,7 @@
             border-radius: 12px;
             border: 2px solid rgb(16, 146, 16);
             padding: 16px;
+            margin: 10px;
         }
 
         label {
@@ -70,7 +71,6 @@
             display: flex;
             justify-content: space-between;
         }
-
     </style>
 </head>
 
@@ -89,7 +89,6 @@
         <svg id="closeBtn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
-          
     </form>
 
     <script>
@@ -98,20 +97,14 @@
             e.preventDefault();
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
-            let emailPattern = /@/;
+            let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             if (emailPattern.test(email)) {
                 localStorage.setItem("User Name", name);
                 localStorage.setItem("User Email", email);
-
                 location.href = "../index.html";
             }else{
-                alert("Please fill the Form")
+                alert("Invalid Email")
             }
-        })
-
-        const closeBtn = document.getElementById("closeBtn");
-        closeBtn.addEventListener("click", function(){
-            location.href = "../index.html";
         })
 
     </script>
